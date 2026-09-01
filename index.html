@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mr Karan Kaleshi 🫶🏼</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#090014;
+  color:white;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+.screen{
+  min-height:100vh;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding:25px;
+}
+
+.screen.active{
+  display:flex;
+}
+
+.card{
+  width:100%;
+  max-width:420px;
+  padding:30px 22px;
+  border-radius:25px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 0 35px rgba(255,70,180,.2);
+}
+
+h1{
+  font-size:32px;
+  margin-bottom:15px;
+}
+
+p{
+  line-height:1.7;
+  color:#eee;
+}
+
+input{
+  width:100%;
+  padding:15px;
+  margin:20px 0 12px;
+  border:none;
+  border-radius:12px;
+  outline:none;
+  font-size:16px;
+  text-align:center;
+}
+
+button{
+  border:none;
+  border-radius:30px;
+  padding:13px 24px;
+  margin:8px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff4fa3,#9b5cff);
+  color:white;
+  box-shadow:0 5px 20px rgba(255,70,180,.25);
+}
+
+button:active{
+  transform:scale(.95);
+}
+
+.error{
+  color:#ff7ba9;
+  min-height:24px;
+}
+
+.cake{
+  position:relative;
+  width:230px;
+  height:170px;
+  margin:30px auto;
+}
+
+.cake-body{
+  position:absolute;
+  bottom:0;
+  left:15px;
+  width:200px;
+  height:105px;
+  background:linear-gradient(#ff8fc4,#ff4f91);
+  border-radius:15px 15px 25px 25px;
+  box-shadow:0 10px 30px rgba(255,60,150,.4);
+}
+
+.cake-top{
+  position:absolute;
+  top:50px;
+  left:15px;
+  width:200px;
+  height:35px;
+  background:#ffd4e8;
+  border-radius:50%;
+}
+
+.candle{
+  position:absolute;
+  top:5px;
+  width:12px;
+  height:50px;
+  background:#fff;
+  border-radius:5px;
+}
+
+.candle:nth-child(1){left:75px}
+.candle:nth-child(2){left:110px}
+.candle:nth-child(3){left:145px}
+
+.flame{
+  position:absolute;
+  width:15px;
+  height:22px;
+  background:#ffd43b;
+  border-radius:50% 50% 50% 50%;
+  top:-23px;
+  left:-2px;
+  box-shadow:0 0 15px #ffb300;
+  animation:flicker .6s infinite alternate;
+}
+
+@keyframes flicker{
+  from{transform:scale(.8)}
+  to{transform:scale(1.15)}
+}
+
+.knife{
+  font-size:55px;
+  position:absolute;
+  right:-5px;
+  top:40px;
+  transform:rotate(-35deg);
+  transition:1s;
+}
+
+.cake.cut .knife{
+  right:75px;
+  top:80px;
+  transform:rotate(15deg);
+}
+
+.cake.cut .cake-body{
+  transform:scaleY(.92);
+}
+
+.memory{
+  background:rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:20px;
+  margin:15px 0;
+  border-left:4px solid #ff65ae;
+  text-align:left;
+}
+
+.memory b{
+  color:#ff8fc4;
+}
+
+.big{
+  font-size:45px;
+}
+
+.heart{
+  font-size:60px;
+  animation:beat 1s infinite;
+}
+
+@keyframes beat{
+  50%{transform:scale(1.2)}
+}
+
+.small{
+  font-size:13px;
+  opacity:.7;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+<section class="screen active" id="password">
+  <div class="card">
+    <div class="big">🔐</div>
+    <h1>Private Birthday Zone</h1>
+    <p>
+      Hmm... someone special is trying to enter 👀<br>
+      Password ke baghair entry bilkul nahi milegi. 😂
+    </p>
+
+    <input id="pass" type="text" placeholder="Enter password">
+
+    <button onclick="checkPassword()">ENTER 🫶🏼</button>
+
+    <div class="error" id="error"></div>
+  </div>
+</section>
+
+
+<!-- INTRO -->
+<section class="screen" id="intro">
+  <div class="card">
+    <div class="heart">❤️</div>
+    <h1>Ohhh... It's You! 😂</h1>
+
+    <p>
+      Welcome, <b>Mr Karan Kaleshi 🫶🏼🙌🏼</b><br><br>
+      Aapko pata bhi hai aaj kya hai? 👀
+    </p>
+
+    <button onclick="showScreen('cake')">
+      I know 😎
+    </button>
+
+    <button onclick="showScreen('cake')">
+      Mujhe nahi pata 😂
+    </button>
+  </div>
+</section>
+
+
+<!-- CAKE -->
+<section class="screen" id="cake">
+  <div class="card">
+    <h1>🎂 Happy Birthday!</h1>
+
+    <p>
+      Lekin pehle cake cut hoga...<br>
+      Aur haan, knife properly pakarna. 😂🔪
+    </p>
+
+    <div class="cake" id="cakeBox">
+      <div class="candle"><div class="flame"></div></div>
+      <div class="candle"><div class="flame"></div></div>
+      <div class="candle"><div class="flame"></div></div>
+
+      <div class="cake-top"></div>
+      <div class="cake-body"></div>
+      <div class="knife">🔪</div>
+    </div>
+
+    <button id="cutBtn" onclick="cutCake()">
+      CUT THE CAKE 🔪🎂
+    </button>
+
+    <button id="memoryBtn" style="display:none" onclick="showScreen('memories')">
+      VIEW MEMORIES 💌
+    </button>
+  </div>
+</section>
+
+
+<!-- MEMORIES -->
+<section class="screen" id="memories">
+  <div class="card">
+    <h1>💌 Our Memories</h1>
+
+    <p>
+      Warning ⚠️<br>
+      Neeche kuch aisi memories hain jinhein dekh kar
+      shayad hum dono phir jhagṛa kar lein. 😂
+    </p>
+
+    <div class="memory">
+      <b>Memory #01 😂</b>
+      <p>
+        Yahan woh conversation honi chahiye
+        jahan hum bilkul normal baat kar rahe thay...
+        aur phir pata nahi kaise jhagra start ho gaya. 😭😂
+      </p>
+    </div>
+
+    <div class="memory">
+      <b>Memory #02 🙄</b>
+      <p>
+        “Bas ab main baat nahi karungi.”
+        <br><br>
+        Also usi din thori der baad:
+        “Achaaa suno...” 😂
+      </p>
+    </div>
+
+    <div class="memory">
+      <b>Memory #03 🫶🏼</b>
+      <p>
+        Kitne bhi jhagre hon,
+        kuch memories hamesha special rahengi. ❤️
+      </p>
+    </div>
+
+    <button onclick="showScreen('ending')">
+      ONE LAST THING... 🥹
+    </button>
+  </div>
+</section>
+
+
+<!-- ENDING -->
+<section class="screen" id="ending">
+  <div class="card">
+    <div class="heart">❤️</div>
+
+    <h1>Okay... Jokes Apart 🥹</h1>
+
+    <p>
+      Jitne bhi jhagre hue,<br>
+      jitni baar ek dusre ko tang kiya,<br>
+      jitni baar kaha “bas ab baat nahi karni” 😂
+      <br><br>
+
+      phir bhi kuch log life mein aise aa jate hain
+      jo memories ka ek beautiful part ban jate hain.
+      🫶🏼
+      <br><br>
+
+      So today, all jokes aside...
+      <br><br>
+
+      <b>Happy Birthday, Mr Karan Kaleshi! 🎂❤️</b>
+      <br><br>
+
+      May your life be full of happiness,
+      success, good memories and...
+      <br>
+      <b>thore kam kalesh. 😂🙌🏼</b>
+    </p>
+
+    <button onclick="showScreen('final')">
+      FINAL MESSAGE 💌
+    </button>
+  </div>
+</section>
+
+
+<!-- FINAL -->
+<section class="screen" id="final">
+  <div class="card">
+    <div class="big">🎂✨</div>
+
+    <h1>Happy Birthday! ❤️</h1>
+
+    <p>
+      And remember...
+      <br><br>
+      <b>
+        You're officially one year older,
+        but unfortunately,
+        you're still Mr Karan Kaleshi. 😂
+      </b>
+      <br><br>
+      🫶🏼🙌🏼❤️
+    </p>
+
+    <p class="small">
+      Made with a little coding, a lot of memories,
+      and probably some future jhagre. 😂
+    </p>
+  </div>
+</section>
+
+
+<script>
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(function(screen){
+    screen.classList.remove('active');
+  });
+
+  document.getElementById(id).classList.add('active');
+}
+
+function checkPassword(){
+
+  const password = document.getElementById("pass").value.trim();
+
+  if(password === "Mr Karan Kaleshi 🫶🏼🙌🏼"){
+    showScreen("intro");
+  }
+  else{
+    document.getElementById("error").innerText =
+    "Wrong password 😭 Itni jaldi bhool gaye? 😂";
+  }
+}
+
+function cutCake(){
+
+  document.getElementById("cakeBox").classList.add("cut");
+
+  document.getElementById("cutBtn").innerText =
+  "CAKE CUT! 🎉🎂";
+
+  setTimeout(function(){
+    document.getElementById("memoryBtn").style.display = "inline-block";
+  },1200);
+}
+
+</script>
+
+</body>
+</html>
